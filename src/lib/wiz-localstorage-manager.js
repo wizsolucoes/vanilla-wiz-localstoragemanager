@@ -22,6 +22,23 @@ export class WizLocalStorageManager {
             _name: key
         })
     }
+
+    setItemNoScope(key, value) {
+        this.saveLocalStorageNoScope(value, {
+            _saveAsJSON: false,
+            _encrypt: false,
+            _name: key
+        })
+    }
+
+    setItemNoScopeEncrypt(key, value) {
+        this.saveLocalStorageNoScope(value, {
+            _saveAsJSON: false,
+            _encrypt: true,
+            _name: key
+        })
+    }
+    
     //Salvar Item tipo JSON localStorage com Scope
     setItemJson(key, value) {
         this.saveLocalStorage(value, {
@@ -150,6 +167,22 @@ export class WizLocalStorageManager {
         _saveAsJSON = _saveAsJSON == null ? this.config.saveAsJSON : _saveAsJSON;
 
         return this._decryptUsingAES256(content, _saveAsJSON);
+    }
+
+    saveLocalStorageNoScope(content, config) {
+        if (config._name) {
+            config._saveAsJSON = config._saveAsJSON == null ? this.config.saveAsJSON : config._saveAsJSON;
+            config._encrypt = config._encrypt == null ? this.config.localStorageEncrypt : config._encrypt;
+
+            if (config._encrypt == true) {
+                window.localStorage.setItem(config._name, this.encrypt(content))
+            }
+            else {
+                window.localStorage.setItem(config._name, content);
+            }
+        } else {
+            console.log("Por favor preencher o campo _name.")
+        }
     }
 
     //Salvar item no localStorage passando configurações

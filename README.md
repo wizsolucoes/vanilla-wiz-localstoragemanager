@@ -77,6 +77,11 @@ var storage = new WizLocalStorageManager({
 * **setItem(key, value);** método da classe que armazena no localStorage o item;
 
 * **setItemEncrypt(key, value);** método da classe que armazena no localStorage o item criptografado;
+
+* **setItemNoScope(key, value);** método da classe que armazena no localStorage o item (Sem escopo);
+
+* **setItemNoScopeEncrypt(key, value);** método da classe que armazena no localStorage o item criptografado (Sem escopo);
+
 #### ----------------GET ESCOPO PADRÃO----------------
 * **getItem(key);** método da classe que recupera o item no localStorage, retorno String;
 
@@ -122,6 +127,12 @@ var storage = new WizLocalStorageManager({
     //método da classe que armazena no localStorage o item criptografado;
     core.setItemEncrypt('colaborador-criptografado', conteudo);
 
+    //método da classe que armazena no localStorage o item (Sem escopo);
+    core.setItemNoScope('colaborador-sem-escopo', conteudo);
+
+    // método da classe que armazena no localStorage o item criptografado (Sem escopo);
+    core.setItemNoScopeEncrypt('colaborador-sem-escopo-criptografado', conteudo);
+    
     ///////////GET ESCOPO PADRÃO///////////
 
     //método da classe que recupera o item no localStorage, retorno String;

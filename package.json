@@ -1,6 +1,6 @@
 {
   "name": "@wizsolucoes/wiz-localstorage-manager",
-  "version": "1.0.3",
+  "version": "1.1.3",
   "description": "Lib js feita em Vanilla JS para gerenciar e ofuscar dados sensíveis no localStorage;",
   "main": "dist/index.js",
   "scripts": {
