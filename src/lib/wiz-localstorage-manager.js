@@ -50,6 +50,43 @@ export class WizLocalStorageManager {
 
     /////////////////////////////GET//////////////////////////////////
 
+    //Recuperar item localStorage com Scope específico 
+    getItemScope(scope, value) {
+        return this.getLocalStorageScope({
+            _name: value,
+            _scope: scope,
+            _encrypt: false,
+            _saveAsJSON: false
+        });
+    }
+    //Recuperar item localStorage com Scope específico: retorno JSON
+    getItemScopeJson(scope, value) {
+        return this.getLocalStorageScope({
+            _name: value,
+            _scope: scope,
+            _encrypt: false,
+            _saveAsJSON: true
+        });
+    }
+    //Recuperar item localStorage criptografado com Scope específico: retorno JSON
+    getItemScopeEncryptJson(scope, value) {
+        return this.getLocalStorageScope({
+            _name: value,
+            _scope: scope,
+            _encrypt: true,
+            _saveAsJSON: true
+        });
+    }
+    //Recuperar item localStorage com Scope específico: retorno String
+    getItemScopeEncrypt(scope, value) {
+        return this.getLocalStorageScope({
+            _name: value,
+            _scope: scope,
+            _encrypt: true,
+            _saveAsJSON: false
+        });
+    }
+
     //Recuperar item localStorage com Scope
     getItem(value) {
         return this.getLocalStorage({
@@ -149,6 +186,33 @@ export class WizLocalStorageManager {
                     return JSON.parse(window.localStorage.getItem(this.config.scope + '-' + config._name));
                 } else {
                     return window.localStorage.getItem(this.config.scope + '-' + config._name);
+                }
+
+            }
+        } else {
+            console.log("Por favor preencher o campo _name.")
+        }
+    }
+
+
+    getLocalStorageScope(config) {
+        if (config._name) {
+            config._scope = config._scope == null ? this.config.localStorageEncrypt : config._scope;
+            config._encrypt = config._encrypt == null ? this.config.localStorageEncrypt : config._encrypt;
+            config._saveAsJSON = config._saveAsJSON == null ? this.config.saveAsJSON : config._saveAsJSON;
+
+            if (config._encrypt == true) {
+                if (config._saveAsJSON) {
+                    return JSON.parse(this.decrypt(window.localStorage.getItem(config._scope + '-' + config._name)));
+                } else {
+                    return this.decrypt(window.localStorage.getItem(config._scope + '-' + config._name));
+                }
+
+            } else {
+                if (config._saveAsJSON) {
+                    return JSON.parse(window.localStorage.getItem(config._scope + '-' + config._name));
+                } else {
+                    return window.localStorage.getItem(config._scope + '-' + config._name);
                 }
 
             }

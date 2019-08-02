@@ -70,19 +70,30 @@ var storage = new WizLocalStorageManager({
 
 ### Propriedades e metódos da classe:
 #### Todos os métodos já incluem o escopo na Key automaticamente .
-
+#### ----------------SET----------------
 * **setItem(key, value);** método da classe que armazena no localStorage o item;
 
 * **setItemEncrypt(key, value);** método da classe que armazena no localStorage o item criptografado;
-
+#### ----------------GET ESCOPO PADRÃO----------------
 * **getItem(key);** método da classe que recupera o item no localStorage, retorno String;
 
 * **getItemEncrypt(key);** método da classe que recupera o item no localStorage criptografado, retorno String;
 
 * **getItemEncryptJson(key);** método da classe que recupera o item no localStorage criptografado, retorno JSON;
-
 * **getItemJson(key);** método da classe que recupera o item no localStorage, retorno JSON;
 
+#### ----------------GET ESCOPO ESPECÍFICO----------------
+
+* **getItemScope(scope,key);** método da classe que recupera o item no localStorage, retorno String;
+
+* **getItemScopeJson(scope,key);** método da classe que recupera o item no localStorage, retorno JSON;
+
+* **getItemScopeEncryptJson(scope,key);** método da classe que recupera o item no localStorage criptografado, retorno JSON descriptografado;
+
+* **getItemScopeEncrypt(scope,key);** método da classe que recupera o item no localStorage criptografado, retorno String descriptografada;
+
+
+#### ----------------DELET----------------
 * **killLocalStorageMyScope();** método da classe que apaga todos os itens que contém  o scopo no localStorage;
 
 * **killLocalStorageContainsScope(value);** método da classe que apaga todos os itens que contém o scopo(value) no localStorage.
