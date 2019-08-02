@@ -4,7 +4,7 @@ const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        library: 'vanilla-wiz-encrypt',
+        library: 'wiz-localstorage-manager',
         libraryTarget: 'umd',
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js'
