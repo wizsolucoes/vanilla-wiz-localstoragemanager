@@ -103,7 +103,7 @@ var storage = new WizLocalStorageManager({
 ## Exemplo completo
 
 ```js
-   var core = new WizLocalStorageManager({
+ var core = new WizLocalStorageManager({
       scope: 'login',
       tokenFromUI: '0123456789123456',
       keySize: 16,
@@ -112,13 +112,15 @@ var storage = new WizLocalStorageManager({
 
     var conteudo = '{"nome":"HUGO RICCHINO","cpf":"123124124123","empresa":"WIZ SOLUÇÕES E CORRETAGEM DE SEGUROS S/A.","matricula":"123","situacao":"ATIVIDADE NORMAL"}';
     ///////////SET///////////
+
     //método da classe que armazena no localStorage o item;
     core.setItem('colaborador', conteudo);
 
     //método da classe que armazena no localStorage o item criptografado;
     core.setItemEncrypt('colaborador-criptografado', conteudo);
 
-    ///////////GET///////////
+    ///////////GET ESCOPO PADRÃO///////////
+
     //método da classe que recupera o item no localStorage, retorno String;
     console.log(core.getItem('colaborador'));
 
@@ -131,14 +133,27 @@ var storage = new WizLocalStorageManager({
     //método da classe que recupera o item no localStorage, retorno JSON.
     console.log(core.getItemJson('colaborador'));
 
+    ///////////GET ESCOPO ESPECÍFICO///////////
+
+    //método da classe que recupera o item no localStorage, retorno String;
+    console.log(core.getItemScope('login', 'colaborador'));
+
+    //método da classe que recupera o item no localStorage, retorno JSON;
+    console.log(core.getItemScopeJson('login', 'colaborador'));
+
+    //método da classe que recupera o item no localStorage criptografado, retorno JSON descriptografado;
+    console.log(core.getItemScopeEncryptJson('login', 'colaborador-criptografado'));
+
+    //método da classe que recupera o item no localStorage criptografado, retorno String descriptografada;
+    console.log(core.getItemScopeEncrypt('login', 'colaborador-criptografado'));
+
     ///////////DELET///////////
 
-    //método da classe que apaga todos os itens que contém  o scopo no localStorage;
+    //método da classe que apaga todos os itens que contém o scopo no localStorage;
     core.killLocalStorageMyScope();
 
     //método da classe que apaga todos os itens que contém o scopo(value) no localStorage.
-    core.killLocalStorageContainsScope('login');
-
+    core.killLocalStorageContainsScope("login");
 
 
 ```
