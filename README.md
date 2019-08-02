@@ -121,7 +121,11 @@ var storage = new WizLocalStorageManager({
     console.log(core.getItemJson('colaborador'));
 
     ///////////DELET///////////
+
+    //método da classe que apaga todos os itens que contém  o scopo no localStorage;
     core.killLocalStorageMyScope();
+
+    //método da classe que apaga todos os itens que contém o scopo(value) no localStorage.
     core.killLocalStorageContainsScope('login');
 
 
