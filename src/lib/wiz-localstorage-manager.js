@@ -160,20 +160,27 @@ export class WizLocalStorageManager {
     //Matar todos itens do localSotage com o scopo 
     //definido no arquivo de configuração
     killLocalStorageMyScope() {
+        var storages = [];
         for (var i = 0; i < localStorage.length; i++) {
-            var key = localStorage.key(i);
-            if (key.includes(this.config.scope)) {
-                window.localStorage.removeItem(key);
+            if (localStorage.key(i).includes(this.config.scope)) {
+                storages.push(localStorage.key(i));
             }
         }
+        for (var i = 0; i < storages.length; i++) {
+            window.localStorage.removeItem(storages[i])
+        }
+
     }
     //Matar todos os itens que contains (name):string no localStorage
     killLocalStorageContainsScope(name) {
+        var storages = [];
         for (var i = 0; i < localStorage.length; i++) {
-            var key = localStorage.key(i);
-            if (key.includes(name)) {
-                window.localStorage.removeItem(key);
+            if (localStorage.key(i).includes(name)) {
+                storages.push(localStorage.key(i));
             }
+        }
+        for (var i = 0; i < storages.length; i++) {
+            window.localStorage.removeItem(storages[i])
         }
     }
 

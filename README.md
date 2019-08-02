@@ -81,14 +81,18 @@ var storage = new WizLocalStorageManager({
 
 * **getItemEncryptJson(key);** método da classe que recupera o item no localStorage criptografado, retorno JSON;
 
-* **getItemJson(key);** método da classe que recupera o item no localStorage, retorno JSON.
+* **getItemJson(key);** método da classe que recupera o item no localStorage, retorno JSON;
+
+* **killLocalStorageMyScope();** método da classe que apaga todos os itens que contém  o scopo no localStorage;
+
+* **killLocalStorageContainsScope(value);** método da classe que apaga todos os itens que contém o scopo(value) no localStorage.
 
 
 
 ## Exemplo completo
 
 ```js
-var core = new WizLocalStorageManager({
+   var core = new WizLocalStorageManager({
       scope: 'login',
       tokenFromUI: '0123456789123456',
       keySize: 16,
@@ -96,13 +100,14 @@ var core = new WizLocalStorageManager({
 
 
     var conteudo = '{"nome":"HUGO RICCHINO","cpf":"123124124123","empresa":"WIZ SOLUÇÕES E CORRETAGEM DE SEGUROS S/A.","matricula":"123","situacao":"ATIVIDADE NORMAL"}';
-
+    ///////////SET///////////
     //método da classe que armazena no localStorage o item;
     core.setItem('colaborador', conteudo);
 
     //método da classe que armazena no localStorage o item criptografado;
     core.setItemEncrypt('colaborador-criptografado', conteudo);
-    
+
+    ///////////GET///////////
     //método da classe que recupera o item no localStorage, retorno String;
     console.log(core.getItem('colaborador'));
 
@@ -114,6 +119,11 @@ var core = new WizLocalStorageManager({
 
     //método da classe que recupera o item no localStorage, retorno JSON.
     console.log(core.getItemJson('colaborador'));
+
+    ///////////DELET///////////
+    core.killLocalStorageMyScope();
+    core.killLocalStorageContainsScope('login');
+
 
 
 ```
