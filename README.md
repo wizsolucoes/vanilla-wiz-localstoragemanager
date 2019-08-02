@@ -22,19 +22,22 @@ Está api faz uso de [node](https://nodejs.org/en/), para configurar localmente 
 **index.js** -> Arquivo padrão de exportação da lib.
 **wiz-localstorage-manager** -> arquivo aonde estão as principais classes do projeto:
 
+## Github
+
+[https://github.com/wizsolucoes/vanilla-wiz-localstoragemanager](https://github.com/wizsolucoes/vanilla-wiz-localstoragemanager)
 
 ## Utilização da lib
 
 Essa lib foi preparada para uso via empacotamento logo ela poderá ser utilizada via importação. Para fazer a instalação do package via npm basta executar o comando:
 
 ```bash
-> npm install 'git+https://github.com/wizsolucoes/vanilla-wiz-localstoragemanager' --save
+> npm i @wizsolucoes/wiz-localstorage-manager
 ```
 
 Para utilizá-la basta importar a classe utilizando o código a seguir:
 
 ```js
-import WizLocalStorageManager from '@wizsolucoes/wiz-localstoragemanager';
+import WizLocalStorageManager from '@wizsolucoes/wiz-localstorage-manager';
 ```
 
 ## Documentação da Classe **WizLocalStorageManager**
@@ -44,7 +47,7 @@ import WizLocalStorageManager from '@wizsolucoes/wiz-localstoragemanager';
 Para utilizar os recursos da classe é necessário criar uma instância da classe. Para isso é obrigatório passar um objeto [config](#objeto-config) conforme o exemplo a seguir:
 
 ```js
-import WizLocalStorageManager from '@wizsolucoes/wiz-localstoragemanager';
+import WizLocalStorageManager from '@wizsolucoes/wiz-localstorage-manager';
 
 var storage = new WizLocalStorageManager({config})
 
