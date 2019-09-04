@@ -38,7 +38,7 @@ export class WizLocalStorageManager {
             _name: key
         })
     }
-    
+
     //Salvar Item tipo JSON localStorage com Scope
     setItemJson(key, value) {
         this.saveLocalStorage(value, {
@@ -142,6 +142,50 @@ export class WizLocalStorageManager {
     }
 
 
+    ///////////////////GET NO SCOPE /////////////////////
+
+    //Recuperar item localStorage sem Scope
+    getItemNoScope(value) {
+        return this.getLocalStorageNoScope({
+            _name: value,
+            _encrypt: false,
+            _saveAsJSON: false
+        });
+    }
+
+    //Recuperar item que foi salvo como JSON no localStorage sem Scope
+    getItemJsonNoScope(value) {
+        return this.getLocalStorageNoScope({
+            _name: value,
+            _encrypt: false,
+            _saveAsJSON: true
+        });
+    }
+
+    //Recuperar item localStorage criptografado sem Scope
+    getItemEncryptNoScope(value) {
+        return this.getLocalStorageNoScope({
+            _name: value,
+            _encrypt: true,
+            _saveAsJSON: false
+        });
+    }
+
+
+    //Recuperar item que foi salvo como JSON no localStorage criptografado sem Scope
+    getItemEncryptJsonNoScope(value) {
+        return this.getLocalStorageNoScope({
+            _name: value,
+            _encrypt: true,
+            _saveAsJSON: true
+        });
+    }
+
+
+
+
+
+
     /////////////////////////////DELET//////////////////////////////////
 
     //Deletar todos os Itens do localStorage com o Scopo padrão
@@ -219,6 +263,32 @@ export class WizLocalStorageManager {
                     return JSON.parse(window.localStorage.getItem(this.config.scope + '-' + config._name));
                 } else {
                     return window.localStorage.getItem(this.config.scope + '-' + config._name);
+                }
+
+            }
+        } else {
+            console.log("Por favor preencher o campo _name.")
+        }
+    }
+
+    //Recuperar item localStorage passango configurações sem scope
+    getLocalStorageNoScope(config) {
+        if (config._name) {
+            config._encrypt = config._encrypt == null ? this.config.localStorageEncrypt : config._encrypt;
+            config._saveAsJSON = config._saveAsJSON == null ? this.config.saveAsJSON : config._saveAsJSON;
+
+            if (config._encrypt == true) {
+                if (config._saveAsJSON) {
+                    return JSON.parse(this.decrypt(window.localStorage.getItem(config._name)));
+                } else {
+                    return this.decrypt(window.localStorage.getItem(config._name));
+                }
+
+            } else {
+                if (config._saveAsJSON) {
+                    return JSON.parse(window.localStorage.getItem(config._name));
+                } else {
+                    return window.localStorage.getItem(config._name);
                 }
 
             }

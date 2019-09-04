@@ -90,6 +90,14 @@ var storage = new WizLocalStorageManager({
 * **getItemEncryptJson(key);** método da classe que recupera o item no localStorage criptografado, retorno JSON;
 * **getItemJson(key);** método da classe que recupera o item no localStorage, retorno JSON;
 
+#### ----------------GET SEM ESCOPO PADRÃO----------------
+* **getItem(key);** método da classe que recupera o item no localStorage, retorno String;
+
+* **getItemEncrypt(key);** método da classe que recupera o item no localStorage criptografado, retorno String;
+
+* **getItemEncryptJson(key);** método da classe que recupera o item no localStorage criptografado, retorno JSON;
+* **getItemJson(key);** método da classe que recupera o item no localStorage, retorno JSON;
+
 #### ----------------GET ESCOPO ESPECÍFICO----------------
 
 * **getItemScope(scope,key);** método da classe que recupera o item no localStorage, retorno String;
@@ -160,6 +168,20 @@ var storage = new WizLocalStorageManager({
 
     //método da classe que recupera o item no localStorage criptografado, retorno String descriptografada;
     console.log(core.getItemScopeEncrypt('login', 'colaborador-criptografado'));
+
+        ///////////GET SEM ESCOPO ESPECÍFICO///////////
+
+    //método da classe que recupera o item no localStorage, retorno String;
+    console.log(core.getItemNoScope('colaborador'));
+
+    //método da classe que recupera o item no localStorage, retorno JSON;
+    console.log(core.getItemJsonNoScope('colaborador'));
+
+    //método da classe que recupera o item no localStorage criptografado, retorno JSON descriptografado;
+    console.log(core.getItemEncryptJsonNoScope('colaborador-criptografado'));
+
+    //método da classe que recupera o item no localStorage criptografado, retorno String descriptografada;
+    console.log(core.getItemEncryptNoScope('colaborador-criptografado'));
 
     ///////////DELET///////////
 
