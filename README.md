@@ -91,12 +91,12 @@ var storage = new WizLocalStorageManager({
 * **getItemJson(key);** método da classe que recupera o item no localStorage, retorno JSON;
 
 #### ----------------GET SEM ESCOPO PADRÃO----------------
-* **getItem(key);** método da classe que recupera o item no localStorage, retorno String;
+* **getItemNoScope(key);** método da classe que recupera o item no localStorage, retorno String;
 
-* **getItemEncrypt(key);** método da classe que recupera o item no localStorage criptografado, retorno String;
+* **getItemEncryptNoScope(key);** método da classe que recupera o item no localStorage criptografado, retorno String;
 
-* **getItemEncryptJson(key);** método da classe que recupera o item no localStorage criptografado, retorno JSON;
-* **getItemJson(key);** método da classe que recupera o item no localStorage, retorno JSON;
+* **getItemEncryptJsonNoScope(key);** método da classe que recupera o item no localStorage criptografado, retorno JSON;
+* **getItemJsonNoScope(key);** método da classe que recupera o item no localStorage, retorno JSON;
 
 #### ----------------GET ESCOPO ESPECÍFICO----------------
 
